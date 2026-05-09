@@ -1,0 +1,13 @@
+[
+	{"District":"BENGALURU","State":"Karnataka","units":130962387,"orders":47842,"ret_units":8646367,"del_units":116006512},
+	{"District":"KOLKATA","State":"West Bengal","units":21856175,"orders":1027,"ret_units":2492897,"del_units":15671312},
+	{"District":"PUNE","State":"Maharashtra","units":15477303,"orders":1495,"ret_units":4123923,"del_units":6081041},
+	{"District":"MUMBAI","State":"Maharashtra","units":9870976,"orders":50731,"ret_units":2720000,"del_units":5001803},
+	{"District":"Pune","State":"Maharashtra","units":4306595,"orders":3493,"ret_units":1198142,"del_units":2176188},
+	{"District":"Kolkata","State":"West Bengal","units":1831171,"orders":50040,"ret_units":444657,"del_units":1235583},
+	{"District":"NEW DELHI","State":"Delhi","units":1251751,"orders":60084,"ret_units":253409,"del_units":749013},
+	{"District":"Bengaluru","State":"Karnataka","units":554771,"orders":16,"ret_units":14439,"del_units":460168},
+	{"District":"EAST DELHI","State":"Delhi","units":201434,"orders":13,"ret_units":16022,"del_units":125777},
+	{"District":"CENTRAL DELHI","State":"Delhi","units":200362,"orders":13,"ret_units":61853,"del_units":103339},
+	{"District":"SOUTH DELHI","State":"Delhi","units":195447,"orders":13,"ret_units":30034,"del_units":128586}
+]
