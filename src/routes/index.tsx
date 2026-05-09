@@ -71,15 +71,8 @@ function Dashboard() {
     (fStatus === ALL || d.Status === fStatus)
   ), [fMonth, fBU, fCat, fState, fPartner, fLogType, fStatus]);
 
-  // Filtered for KPIs that need ALL statuses to compute rates
-  const filteredAllStatus = useMemo(() => data.filter(d =>
-    (fMonth === ALL || d.Month_No === Number(fMonth)) &&
-    (fBU === ALL || d.BU === fBU) &&
-    (fCat === ALL || d.Category === fCat) &&
-    (fState === ALL || d.State === fState) &&
-    (fPartner === ALL || d.Logistic_Partner === fPartner) &&
-    (fLogType === ALL || d.Logistics_Type === fLogType)
-  ), [fMonth, fBU, fCat, fState, fPartner, fLogType]);
+  // Status filter applies to all visuals; alias for clarity
+  const filteredAllStatus = filtered;
 
   const kpis = useMemo(() => {
     const total = filteredAllStatus.reduce((s, d) => s + d.units, 0);
