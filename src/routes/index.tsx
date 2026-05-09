@@ -234,9 +234,26 @@ function Dashboard() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b sticky top-0 z-10 bg-background/95 backdrop-blur">
-        <div className="max-w-[1600px] mx-auto px-6 py-4">
-          <h1 className="text-2xl font-bold">E-Commerce Performance Dashboard</h1>
-          <p className="text-sm text-muted-foreground">FY2023 · Growth, Leakage & Logistics Insights</p>
+        <div className="max-w-[1600px] mx-auto px-6 py-4 flex items-center justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold">E-Commerce Performance Dashboard</h1>
+            <p className="text-sm text-muted-foreground">FY2023 · Growth, Leakage & Logistics Insights</p>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="text-right hidden sm:block">
+              <div className="text-xs uppercase tracking-wider text-muted-foreground">Prepared by</div>
+              <div className="text-lg font-bold tracking-tight bg-gradient-to-r from-primary to-chart-2 bg-clip-text text-transparent">
+                SALEH MAHBUB
+              </div>
+            </div>
+            <button
+              onClick={() => setDark(d => !d)}
+              aria-label="Toggle theme"
+              className="rounded-md border p-2 hover:bg-accent transition-colors"
+            >
+              {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+          </div>
         </div>
       </header>
 
