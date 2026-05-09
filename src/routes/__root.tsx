@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "E-Commerce Performance Dashboard" },
+      { name: "description", content: "Insight Engine generates data analysis prompts for e-commerce, creating dashboards with visualizations and filters." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "E-Commerce Performance Dashboard" },
+      { property: "og:description", content: "Insight Engine generates data analysis prompts for e-commerce, creating dashboards with visualizations and filters." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "E-Commerce Performance Dashboard" },
+      { name: "twitter:description", content: "Insight Engine generates data analysis prompts for e-commerce, creating dashboards with visualizations and filters." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e2a70d82-53a2-467f-8776-879eaf7a8d7f/id-preview-c64c5e93--1963b00f-3717-4ecc-9f6d-97b65f8432d0.lovable.app-1778334756514.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e2a70d82-53a2-467f-8776-879eaf7a8d7f/id-preview-c64c5e93--1963b00f-3717-4ecc-9f6d-97b65f8432d0.lovable.app-1778334756514.png" },
     ],
     links: [
       {
