@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 import aggData from "@/data/agg.json";
 import topDistrictsData from "@/data/top_districts.json";
 import statesData from "@/data/states.json";
@@ -53,6 +54,17 @@ function Dashboard() {
     statuses: uniq(data.map(d => d.Status)),
   }), []);
 
+  const [dark, setDark] = useState(false);
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    const isDark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setDark(isDark);
+  }, []);
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+    if (typeof window !== "undefined") localStorage.setItem("theme", dark ? "dark" : "light");
+  }, [dark]);
+
   const [fMonth, setFMonth] = useState(ALL);
   const [fBU, setFBU] = useState(ALL);
   const [fState, setFState] = useState(ALL);
@@ -71,15 +83,8 @@ function Dashboard() {
     (fStatus === ALL || d.Status === fStatus)
   ), [fMonth, fBU, fCat, fState, fPartner, fLogType, fStatus]);
 
-  // Filtered for KPIs that need ALL statuses to compute rates
-  const filteredAllStatus = useMemo(() => data.filter(d =>
-    (fMonth === ALL || d.Month_No === Number(fMonth)) &&
-    (fBU === ALL || d.BU === fBU) &&
-    (fCat === ALL || d.Category === fCat) &&
-    (fState === ALL || d.State === fState) &&
-    (fPartner === ALL || d.Logistic_Partner === fPartner) &&
-    (fLogType === ALL || d.Logistics_Type === fLogType)
-  ), [fMonth, fBU, fCat, fState, fPartner, fLogType]);
+  // Status filter applies to all visuals; alias for clarity
+  const filteredAllStatus = filtered;
 
   const kpis = useMemo(() => {
     const total = filteredAllStatus.reduce((s, d) => s + d.units, 0);
@@ -229,9 +234,26 @@ function Dashboard() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b sticky top-0 z-10 bg-background/95 backdrop-blur">
-        <div className="max-w-[1600px] mx-auto px-6 py-4">
-          <h1 className="text-2xl font-bold">E-Commerce Performance Dashboard</h1>
-          <p className="text-sm text-muted-foreground">FY2023 · Growth, Leakage & Logistics Insights</p>
+        <div className="max-w-[1600px] mx-auto px-6 py-4 flex items-center justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold">E-Commerce Performance Dashboard</h1>
+            <p className="text-sm text-muted-foreground">FY2023 · Growth, Leakage & Logistics Insights</p>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="text-right hidden sm:block">
+              <div className="text-xs uppercase tracking-wider text-muted-foreground">Prepared by</div>
+              <div className="text-lg font-bold tracking-tight bg-gradient-to-r from-primary to-chart-2 bg-clip-text text-transparent">
+                SALEH MAHBUB
+              </div>
+            </div>
+            <button
+              onClick={() => setDark(d => !d)}
+              aria-label="Toggle theme"
+              className="rounded-md border p-2 hover:bg-accent transition-colors"
+            >
+              {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+          </div>
         </div>
       </header>
 
