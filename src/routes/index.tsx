@@ -54,6 +54,17 @@ function Dashboard() {
     statuses: uniq(data.map(d => d.Status)),
   }), []);
 
+  const [dark, setDark] = useState(false);
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    const isDark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setDark(isDark);
+  }, []);
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+    if (typeof window !== "undefined") localStorage.setItem("theme", dark ? "dark" : "light");
+  }, [dark]);
+
   const [fMonth, setFMonth] = useState(ALL);
   const [fBU, setFBU] = useState(ALL);
   const [fState, setFState] = useState(ALL);
