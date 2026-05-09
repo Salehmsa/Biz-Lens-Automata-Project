@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 import aggData from "@/data/agg.json";
 import topDistrictsData from "@/data/top_districts.json";
 import statesData from "@/data/states.json";
